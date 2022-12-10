@@ -1,5 +1,5 @@
-/node_modules
-/vendor
 /.idea
+/.vs
 /.vscode
+/vendor
 composer.lock
