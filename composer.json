@@ -1,0 +1,32 @@
+{
+    "name": "norman-huth/console-app-template",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "NormanHuth\\ConsoleApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Norman Huth",
+            "homepage": "https://huth.it"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Muetze42/console-app-template/issues",
+        "source": "https://github.com/Muetze42/console-app-template"
+    },
+    "require": {
+        "php": "^8.0",
+        "illuminate/console": "^9.0",
+        "illuminate/events": "^9.0"
+    },
+    "bin": [
+        "bin/app"
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
