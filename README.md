@@ -1,4 +1,4 @@
-# Lura - A Console Application Install
+# Lura - A Console Application Installer
 
 Base package for console application installer.
 
