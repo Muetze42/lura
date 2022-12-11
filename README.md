@@ -1,73 +1,51 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://vshymanskyy.github.io/StandWithUkraine/)
+# Lura - A Console Application Install
 
-# Lura
+Base package for console application installer.
 
-An command line installer and generator kit.  
-**Currently still under development.**
+## Install
 
-_Supported_
-
-* :white_check_mark: Laravel
-* :white_check_mark: Laravel Breeze
-* :white_check_mark: Laravel Jetstream
-* :white_check_mark: Laravel Nova
-* :white_check_mark: Laravel Package
-* :black_square_button: (Illuminate) Standalone Packages _(In development)_<br>Current available:
-    * [illuminate/cache](https://github.com/illuminate/cache)
-    * [illuminate/database](https://github.com/illuminate/database)
-    * [illuminate/filesystem](https://github.com/illuminate/filesystem)
-    * [illuminate/support](https://github.com/illuminate/support)
-    * [illuminate/validation](https://github.com/illuminate/validation)
-    * [illuminate/view](https://github.com/illuminate/view)
-* :white_square_button: Statamic _(In planning)_
-* :white_square_button: Symfony _(In planning)_
-* :white_square_button: Pimcore _(In planning)_
-* :white_square_button: CoreShop _(In planning)_
-
-## Installation
-
-```bash
+```shell
 composer global require norman-huth/lura
 ```
 
 ## Usage
 
-### Create a app, package etc
+### Install Installer
 
-```bash
-lura create
+The package does not include an installer out of the box.
+
+You need to install one or more installers.
+
+Example: [norman-huth/laravel-installer](https://github.com/Muetze42/laravel-installer)
+
+Do not forget to register the Installer after installation (`lura register norman-huth/laravel-installer`)
+
+### Run Lura
+
+```shell
+lura 
 ```
 
-Alternative:
+### Edit Installer Config
 
-```bash
-lura new
+Use this command to get the path to your local config file:
+
+```shell
+lura config:file
 ```
 
-### Install a (standalone) package
+### Register Installed Installer
 
-```bash
-lura install
+```shell
+lura register vendor/name
 ```
 
-### Show current config
+### Clear Lura Cache
 
-```bash
-lura config
+```shell
+lura cache:clear
 ```
 
-### Set config
+### Create Installer
 
-```bash
-lura config set custom-app-path /path-to-/folder
-```
-
-Array
-
-```bash
-lura config set default-author.homepage https://huth.it
-```
-
-## Documentation
-
-Still comes everything ;) 🙃
+Use this template: [lura-installer-template](https://github.com/Muetze42/lura-installer-template)

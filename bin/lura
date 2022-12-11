@@ -1,25 +1,15 @@
 #!/usr/bin/env php
 <?php
 
-if (file_exists(__DIR__.'/../../../autoload.php')) {
-    require __DIR__.'/../../../autoload.php';
-} else {
-    require __DIR__.'/../vendor/autoload.php';
-}
+$autoloader = file_exists(__DIR__.'/../../../autoload.php') ? __DIR__.'/../../../autoload.php' : __DIR__.'/../vendor/autoload.php';
 
-$composer = json_decode(file_get_contents(dirname(__FILE__, 2).'/composer.json'), true);
+require $autoloader;
 
-$app = new Symfony\Component\Console\Application('Application Installer', $composer['version']);
-foreach (glob(dirname(__DIR__).'/src/Console/*.php') as $filename) {
-    $command = pathinfo($filename, PATHINFO_FILENAME);
-    if ($command != 'Command') {
-        $class = 'Lura\\Console\\'.$command;
-        $app->add(new $class);
-    }
-}
+use NormanHuth\ConsoleApp\App;
+
 
 try {
-    $app->run();
+    new App('Lura by Norman Huth', 1, 'install');
 } catch (Exception $exception) {
-    throw new RuntimeException($exception);
+    die('Error: '.$exception);
 }

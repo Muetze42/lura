@@ -1,60 +1,38 @@
 {
     "name": "norman-huth/lura",
-    "description": "Application installer and creator. Based on Laravel installer by Taylor Otwell",
-    "keywords": [
-        "auth",
-        "breeze",
-        "cli",
-        "illuminate",
-        "inertia",
-        "installer",
-        "jetstream",
-        "laravel",
-        "laravel-installer",
-        "laravel-nova",
-        "nova",
-        "react",
-        "tailwind",
-        "vue",
-        "vue-js"
-    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "NormanHuth\\ConsoleApp\\": "src/"
+        }
+    },
     "authors": [
         {
             "name": "Norman Huth",
             "homepage": "https://huth.it"
         }
     ],
-    "homepage": "https://github.com/Muetze42/lura",
     "support": {
         "issues": "https://github.com/Muetze42/lura/issues",
-        "source": "https://github.com/Muetze42/lura",
-        "docs": "https://github.com/Muetze42/lura#readme"
+        "docs": "https://github.com/Muetze42/lura",
+        "source": "https://github.com/Muetze42/lura"
+    },
+    "require": {
+        "php": "^8.0",
+        "illuminate/cache": "^9.43",
+        "illuminate/config": "^9.43",
+        "illuminate/console": "^9.0",
+        "illuminate/events": "^9.0",
+        "illuminate/filesystem": "^9.43",
+        "league/flysystem": "^3.11",
+        "norman-huth/helpers-collection-php": "^1.0"
     },
     "bin": [
         "bin/lura"
     ],
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Lura\\": "src/"
-        },
-        "files": [
-            "functions/helpers.php"
-        ]
-    },
-    "require": {
-        "php": "^8.0",
-        "illuminate/config": "^8.0|^9.0",
-        "illuminate/container": "^8.0|^9.0",
-        "illuminate/filesystem": "^8.0|^9.0",
-        "league/flysystem": "^3.0",
-        "symfony/console": "^5.0|^6.0",
-        "symfony/process": "^5.0|^6.0"
-    },
     "config": {
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "version": "0.0.1"
+    "prefer-stable": true
 }
