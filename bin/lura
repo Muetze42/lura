@@ -7,7 +7,6 @@ require $autoloader;
 
 use NormanHuth\ConsoleApp\App;
 
-
 try {
     new App('Lura by Norman Huth', 1, 'install');
 } catch (Exception $exception) {
