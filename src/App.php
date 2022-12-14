@@ -81,6 +81,7 @@ class App
         $items = glob(__DIR__.DIRECTORY_SEPARATOR.$path.'/*.php');
         foreach ($items as $item) {
             $class = __NAMESPACE__.'\\'.$path.'\\'.pathinfo($item, PATHINFO_FILENAME);
+            $class = str_replace('/', '\\', $class);
             $this->artisan->resolve($class);
         }
 
