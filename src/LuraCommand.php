@@ -29,7 +29,6 @@ class LuraCommand extends Command
     public Filesystem $cwdDisk;
     public string $composer;
     public string $composerHome;
-    public bool $initialized = false;
     public CacheRepository $cache;
     public array $config;
     public string $userConfigFile;
@@ -180,7 +179,7 @@ class LuraCommand extends Command
     {
         return $this->filesystemManager->build([
             'driver' => 'local',
-            'root'   => trim($path, '/\\'),
+            'root'   => $path,
         ]);
     }
 
