@@ -53,7 +53,10 @@ class InstallCommand extends LuraCommand
         }
 
         $installer = count($this->installers) == 1 ? 0 : $this->choice('Which installer do you want to use?', $this->installers);
-        $installer = $this->installers[$installer];
+
+        if (!$installer) {
+            $installer = $this->installers[0];
+        }
 
         $repositoryConfigFile = $this->composerHome.'/vendor/'.$installer.'/config/lura-config.json';
 
