@@ -3,7 +3,6 @@
 namespace NormanHuth\ConsoleApp\Console\Commands;
 
 use NormanHuth\ConsoleApp\LuraCommand;
-use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 class InstallCommand extends LuraCommand
 {
@@ -30,10 +29,8 @@ class InstallCommand extends LuraCommand
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle()
     {
         $repositories = data_get($this->config, 'repositories', []);
 
@@ -49,7 +46,7 @@ class InstallCommand extends LuraCommand
 
         if (empty($this->installers)) {
             $this->error('No Installer found. Please install and register 1 installer or more');
-            return SymfonyCommand::FAILURE;
+            return;
         }
 
         $installer = count($this->installers) == 1 ? 0 : $this->choice('Which installer do you want to use?', $this->installers);
@@ -65,6 +62,6 @@ class InstallCommand extends LuraCommand
 
         require_once $this->composerHome.'/vendor/'.$installer.'/Lura/Installer.php';
 
-        return (new \Installer)->runLura($this);
+        (new \Installer)->runLura($this);
     }
 }
