@@ -1,14 +1,15 @@
 #!/usr/bin/env php
 <?php
 
-$autoloader = file_exists(__DIR__.'/../../../autoload.php') ? __DIR__.'/../../../autoload.php' : __DIR__.'/../vendor/autoload.php';
+$autoloader = file_exists(__DIR__ . '/../../../autoload.php') ?
+    __DIR__ . '/../../../autoload.php' : __DIR__ . '/../vendor/autoload.php';
 
 require $autoloader;
 
 use NormanHuth\ConsoleApp\App;
 
 try {
-    new App('Lura by Norman Huth', 1, 'install');
+    new App('Lura by Norman Huth', 2, 'install');
 } catch (Exception $exception) {
-    die('Error: '.$exception);
+    die('Error: ' . $exception);
 }

@@ -25,14 +25,41 @@ class LuraCommand extends Command
      */
     public array $installerConfig;
 
+    /**
+     * @var \Illuminate\Filesystem\FilesystemManager
+     */
     public FilesystemManager $filesystemManager;
+    /**
+     * @var \Illuminate\Contracts\Filesystem\Filesystem
+     */
     public Filesystem $cwdDisk;
+    /**
+     * @var string
+     */
     public string $composer;
+    /**
+     * @var string
+     */
     public string $composerHome;
+    /**
+     * @var \Illuminate\Contracts\Cache\Repository
+     */
     public CacheRepository $cache;
+    /**
+     * @var array
+     */
     public array $config;
+    /**
+     * @var string
+     */
     public string $userConfigFile;
+    /**
+     * @var string
+     */
     public string $tempPath = '';
+    /**
+     * @var \Illuminate\Filesystem\Filesystem
+     */
     public \Illuminate\Filesystem\Filesystem $filesystem;
 
     /**

@@ -35,8 +35,8 @@ class InstallCommand extends LuraCommand
         $repositories = data_get($this->config, 'repositories', []);
 
         foreach ($repositories as $repository) {
-            $classFile = $this->composerHome.'/vendor/'.$repository.'/Lura/Installer.php';
-            $composerFile = $this->composerHome.'/vendor/'.$repository.'/composer.json';
+            $classFile = $this->composerHome . '/vendor/' . $repository . '/Lura/Installer.php';
+            $composerFile = $this->composerHome . '/vendor/' . $repository . '/composer.json';
             if (file_exists($classFile)) {
                 $content = file_get_contents($composerFile);
                 $data = json_decode($content, true);
@@ -49,19 +49,20 @@ class InstallCommand extends LuraCommand
             return;
         }
 
-        $installer = count($this->installers) == 1 ? 0 : $this->choice('Which installer do you want to use?', $this->installers);
+        $installer = count($this->installers) == 1 ? 0 :
+            $this->choice('Which installer do you want to use?', $this->installers);
 
         if (!$installer) {
             $installer = $this->installers[0];
         }
 
-        $repositoryConfigFile = $this->composerHome.'/vendor/'.$installer.'/config/lura-config.json';
+        $repositoryConfigFile = $this->composerHome . '/vendor/' . $installer . '/config/lura-config.json';
 
-        $this->installerConfig = data_get($this->config, 'repositories-config.'.$installer, []);
-        $this->alert('Starting '.$installer);
+        $this->installerConfig = data_get($this->config, 'repositories-config.' . $installer, []);
+        $this->alert('Starting ' . $installer);
 
-        require_once $this->composerHome.'/vendor/'.$installer.'/Lura/Installer.php';
+        require_once $this->composerHome . '/vendor/' . $installer . '/Lura/Installer.php';
 
-        (new \Installer)->runLura($this);
+        (new \Installer())->runLura($this);
     }
 }

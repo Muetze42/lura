@@ -11899,9 +11899,9 @@ namespace {
             return 'Lura';
         }
 
-        public function runLura(mixed $command): int
+        public function runLura(mixed $command)
         {
-            return 0;
+            //
         }
     }
 }
