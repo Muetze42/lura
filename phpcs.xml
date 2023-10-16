@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- @see https://pear.php.net/manual/en/package.php.php-codesniffer.annotated-ruleset.php -->
+<ruleset name="PHPCS Rules">
+    <description>PHPCS Laravel rule set - Created 10/2023 by Norman Huth</description>
+
+    <file>./Lura</file>
+
+	<!-- Use colors in output -->
+    <arg name="colors"/>
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="ignoreComments" value="true" />
+        </properties>
+    </rule>
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="120"/>
+            <!-- property name="ignoreComments" value="true" / -->
+        </properties>
+    </rule>
+
+	<exclude-pattern>*/*.blade.php</exclude-pattern>
+	<exclude-pattern>*/*.js</exclude-pattern>
+	<exclude-pattern>*/*.vue</exclude-pattern>
+    <exclude-pattern>*/.idea/*</exclude-pattern>
+    <exclude-pattern>*/.phpstorm.meta.php</exclude-pattern>
+    <exclude-pattern>*/.vscode/*</exclude-pattern>
+    <exclude-pattern>*/_ide_*.php</exclude-pattern>
+</ruleset>
