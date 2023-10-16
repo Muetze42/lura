@@ -2,8 +2,8 @@
 
 namespace NormanHuth\ConsoleApp\Console\Commands;
 
+use Illuminate\Support\Str;
 use NormanHuth\ConsoleApp\LuraCommand;
-use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 class RegisterInstallerCommand extends LuraCommand
 {
@@ -23,19 +23,17 @@ class RegisterInstallerCommand extends LuraCommand
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle()
     {
         $repository = $this->argument('repository');
 
-        $composerJson = $this->composerHome.'/composer.json';
+        $composerJson = $this->composerHome . '/composer.json';
 
         if (!file_exists($composerJson)) {
             $this->error('Composer home composer.json not found.');
 
-            return SymfonyCommand::FAILURE;
+            return;
         }
 
         $content = json_decode(file_get_contents($composerJson), true);
@@ -48,15 +46,15 @@ class RegisterInstallerCommand extends LuraCommand
         });
 
         if (!in_array($repository, $repositories)) {
-            $this->error('The package '.$repository.' is not installed.');
+            $this->error('The package ' . $repository . ' is not installed.');
 
-            return SymfonyCommand::FAILURE;
+            return;
         }
 
-        if (!is_dir($this->composerHome.'/vendor/'.$repository)) {
-            $this->error('The package '.$repository.' directory is missing.');
+        if (!is_dir($this->composerHome . '/vendor/' . $repository)) {
+            $this->error('The package ' . $repository . ' directory is missing.');
 
-            return SymfonyCommand::FAILURE;
+            return;
         }
 
         $configRepositories = data_get($this->config, 'repositories', []);
@@ -64,27 +62,25 @@ class RegisterInstallerCommand extends LuraCommand
         $configRepositories = array_unique($configRepositories);
         data_set($this->config, 'repositories', $configRepositories);
 
-        $repositoryConfigFile = $this->composerHome.'/vendor/'.$repository.'/config/lura-config.json';
+        $repositoryConfigFile = $this->composerHome . '/vendor/' . $repository . '/config/lura-config.json';
         if (file_exists($repositoryConfigFile)) {
             $content = file_get_contents($repositoryConfigFile);
-            if (isJson($content)) {
+            if (Str::isJson($content)) {
                 $repositoryConfig = json_decode($content, true);
             }
         }
 
         if (!empty($repositoryConfig)) {
-            $userItems = data_get($this->config, 'repositories-config.'.$repository, []);
+            $userItems = data_get($this->config, 'repositories-config.' . $repository, []);
             foreach ($userItems as $key => $value) {
                 $repositoryConfig[$key] = $value;
             }
 
-            data_set($this->config, 'repositories-config.'.$repository, $repositoryConfig);
+            data_set($this->config, 'repositories-config.' . $repository, $repositoryConfig);
         }
 
         $this->setUserConfig($this->config);
 
         $this->info('Installer added!');
-
-        return SymfonyCommand::SUCCESS;
     }
 }

@@ -50,6 +50,11 @@ lura cache:clear
 
 Use this template: [lura-installer-template](https://github.com/Muetze42/lura-installer-template)
 
+### Upgrade 1 to 2
+
+Remove the `int` return of the `runLura` method.
+
+---
 
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://vshymanskyy.github.io/StandWithUkraine/)
 

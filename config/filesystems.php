@@ -7,7 +7,7 @@ return [
         'disks' => [
             'app' => [
                 'driver' => 'local',
-                'root'   => dirname(__DIR__).'/app',
+                'root' => dirname(__DIR__) . '/app',
             ],
         ],
     ],

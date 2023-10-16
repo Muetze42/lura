@@ -32,6 +32,7 @@ class App
 
     /**
      * @param int|string|null $version
+     *
      * @throws Exception
      */
     public function __construct(string $appName = 'Console App', int|string $version = null, string $defaultCommand = null)
@@ -46,7 +47,7 @@ class App
 
         $this->artisan->setName($appName);
 
-        $this->resolveCommands('Console'.DIRECTORY_SEPARATOR.'Commands');
+        $this->resolveCommands('Console' . DIRECTORY_SEPARATOR . 'Commands');
 
         $this->artisan->run();
     }
@@ -55,39 +56,41 @@ class App
      * Get Version from the composer.json file or set default to 1
      *
      * @param int|string|null $version
+     *
      * @return string
      */
     protected function setVersion(int|string|null $version): string
     {
         if (!$version) {
-            $content = file_get_contents(__DIR__.'/../composer.json');
+            $content = file_get_contents(__DIR__ . '/../composer.json');
             $data = json_decode($content, true);
 
             $version = data_get($data, 'version', 1);
         }
 
-        return (string)$version;
+        return (string) $version;
     }
 
     /**
      * Register all the commands in the given directory.
      *
      * @param string $path
+     *
      * @return void
      */
     protected function resolveCommands(string $path): void
     {
         $path = trim($path, '/\\');
-        $items = glob(__DIR__.DIRECTORY_SEPARATOR.$path.'/*.php');
+        $items = glob(__DIR__ . DIRECTORY_SEPARATOR . $path . '/*.php');
         foreach ($items as $item) {
-            $class = __NAMESPACE__.'\\'.$path.'\\'.pathinfo($item, PATHINFO_FILENAME);
+            $class = __NAMESPACE__ . '\\' . $path . '\\' . pathinfo($item, PATHINFO_FILENAME);
             $class = str_replace('/', '\\', $class);
             $this->artisan->resolve($class);
         }
 
-        $directories = glob(__DIR__.DIRECTORY_SEPARATOR.$path.'/*', GLOB_ONLYDIR);
+        $directories = glob(__DIR__ . DIRECTORY_SEPARATOR . $path . '/*', GLOB_ONLYDIR);
         foreach ($directories as $directory) {
-            $this->resolveCommands($path.DIRECTORY_SEPARATOR.basename($directory));
+            $this->resolveCommands($path . DIRECTORY_SEPARATOR . basename($directory));
         }
     }
 }
