@@ -7,9 +7,21 @@ $autoloader = file_exists(__DIR__ . '/../../../autoload.php') ?
 require $autoloader;
 
 use NormanHuth\ConsoleApp\App;
+use Symfony\Component\Console\Exception\CommandNotFoundException;
 
 try {
-    new App('Lura by Norman Huth', 2, 'install');
+    new App('Lura', 2, 'install');
+} catch (CommandNotFoundException) {
+
+    $message = [
+        "\033[31mCommand not Found.\033[0m",
+        "Enter \033[32m`lura list`\033[0m to list available commands for the application.",
+        "Or enter \033[32m`lura`\033[0m to start a Installation process.",
+    ];
+
+    echo implode("\n", $message);
+    exit();
 } catch (Exception $exception) {
-    die('Error: ' . $exception);
+    echo "\033[31m$exception \033[0m\n";
+    exit();
 }

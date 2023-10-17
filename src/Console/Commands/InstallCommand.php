@@ -25,7 +25,7 @@ class InstallCommand extends LuraCommand
      *
      * @var string
      */
-    protected $description = 'Create a new app';
+    protected $description = 'Create a new app with installer.';
 
     /**
      * Execute the console command.

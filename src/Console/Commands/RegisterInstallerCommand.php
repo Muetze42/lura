@@ -19,7 +19,7 @@ class RegisterInstallerCommand extends LuraCommand
      *
      * @var string
      */
-    protected $description = 'Register a Installer repository';
+    protected $description = 'Register a Installer repository.';
 
     /**
      * Execute the console command.

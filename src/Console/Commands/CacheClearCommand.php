@@ -18,7 +18,7 @@ class CacheClearCommand extends LuraCommand
      *
      * @var string
      */
-    protected $description = 'Flush the application cache';
+    protected $description = 'Flush the application cache.';
 
     /**
      * Execute the console command.

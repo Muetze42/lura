@@ -35,9 +35,12 @@ class App
      *
      * @throws Exception
      */
-    public function __construct(string $appName = 'Console App', int|string $version = null, string $defaultCommand = null)
-    {
-        $this->container = new Container;
+    public function __construct(
+        string $appName = 'Console App',
+        int|string $version = null,
+        string $defaultCommand = null
+    ) {
+        $this->container = new Container();
         $this->events = new Dispatcher($this->container);
         $this->artisan = new Application($this->container, $this->events, $this->setVersion($version));
 

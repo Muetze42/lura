@@ -18,7 +18,7 @@ class ConfigFileCommand extends LuraCommand
      *
      * @var string
      */
-    protected $description = 'Get the path to the local config file';
+    protected $description = 'Get the path to the local config file.';
 
     /**
      * Execute the console command.
