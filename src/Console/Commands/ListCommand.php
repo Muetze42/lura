@@ -89,6 +89,7 @@ class ListCommand extends LuraCommand
      */
     protected function getColumnWidth(array $commands): int
     {
+        $widths = [];
         foreach ($commands as $command) {
             if ($command instanceof Command) {
                 $widths[] = Helper::width($command->getName());
