@@ -15,8 +15,8 @@ try {
 
     $message = [
         "\033[31mCommand not Found.\033[0m",
-        "Enter \033[32m`lura list`\033[0m to list available commands for the application.",
-        "Or enter \033[32m`lura`\033[0m to start a Installation process.",
+        "Enter `\033[32m" . basename(__FILE__) . " list\033[0m` to list available commands for the application.",
+        "Or enter `\033[32m" . basename(__FILE__) . "\033[0m` to start a Installation process.",
     ];
 
     echo implode("\n", $message);
