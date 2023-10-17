@@ -11889,16 +11889,6 @@ namespace {
     }
 
     class Installer extends \NormanHuth\ConsoleApp\LuraInstaller{
-        public static function installerName(): string
-        {
-            return 'Norman Huth';
-        }
-
-        public static function installerAuthor(): string
-        {
-            return 'Lura';
-        }
-
         public function runLura(mixed $command)
         {
             //
