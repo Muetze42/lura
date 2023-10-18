@@ -6,11 +6,11 @@ $autoloader = file_exists(__DIR__ . '/../../../autoload.php') ?
 
 require $autoloader;
 
-use NormanHuth\ConsoleApp\App;
+use NormanHuth\Lura\App;
 use Symfony\Component\Console\Exception\CommandNotFoundException;
 
 try {
-    new App('Lura', 2, 'install');
+    new App('Lura', 3, 'install');
 } catch (CommandNotFoundException) {
 
     $message = [

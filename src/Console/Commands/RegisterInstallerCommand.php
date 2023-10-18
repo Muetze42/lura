@@ -1,9 +1,9 @@
 <?php
 
-namespace NormanHuth\ConsoleApp\Console\Commands;
+namespace NormanHuth\Lura\Console\Commands;
 
 use Illuminate\Support\Str;
-use NormanHuth\ConsoleApp\LuraCommand;
+use NormanHuth\Lura\LuraCommand;
 
 class RegisterInstallerCommand extends LuraCommand
 {

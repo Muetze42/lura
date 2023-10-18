@@ -1,6 +1,6 @@
 <?php
 
-namespace NormanHuth\ConsoleApp;
+namespace NormanHuth\Lura;
 
 use NormanHuth\Helpers\Str;
 
@@ -9,7 +9,7 @@ abstract class LuraInstaller
     /**
      * Execute the installer console command.
      *
-     * @param mixed|\NormanHuth\ConsoleApp\LuraCommand $command
+     * @param mixed|\NormanHuth\Lura\LuraCommand $command
      */
     abstract public function runLura(mixed $command);
 
