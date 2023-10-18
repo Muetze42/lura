@@ -54,6 +54,10 @@ Use this template: [lura-installer-template](https://github.com/Muetze42/lura-in
 
 Remove the `int` return of the `runLura` method.
 
+### Upgrade 3
+
+Replace the `NormanHuth\ConsoleApp` with `NormanHuth\Lura`.
+
 ---
 
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://vshymanskyy.github.io/StandWithUkraine/)
