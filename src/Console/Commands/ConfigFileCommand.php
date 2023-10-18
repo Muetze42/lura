@@ -1,8 +1,8 @@
 <?php
 
-namespace NormanHuth\ConsoleApp\Console\Commands;
+namespace NormanHuth\Lura\Console\Commands;
 
-use NormanHuth\ConsoleApp\LuraCommand;
+use NormanHuth\Lura\LuraCommand;
 
 class ConfigFileCommand extends LuraCommand
 {

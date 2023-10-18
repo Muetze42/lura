@@ -1,8 +1,8 @@
 <?php
 
-namespace NormanHuth\ConsoleApp\Console\Commands;
+namespace NormanHuth\Lura\Console\Commands;
 
-use NormanHuth\ConsoleApp\LuraCommand;
+use NormanHuth\Lura\LuraCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Descriptor\ApplicationDescription;
 use Symfony\Component\Console\Helper\Helper;

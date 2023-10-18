@@ -11888,7 +11888,7 @@ namespace {
     {
     }
 
-    class Installer extends \NormanHuth\ConsoleApp\LuraInstaller{
+    class Installer extends \NormanHuth\Lura\LuraInstaller{
         public function runLura(mixed $command)
         {
             //

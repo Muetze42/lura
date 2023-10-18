@@ -1,6 +1,6 @@
 <?php
 
-namespace NormanHuth\ConsoleApp;
+namespace NormanHuth\Lura;
 
 use Illuminate\Container\Container as IlluminateContainer;
 
