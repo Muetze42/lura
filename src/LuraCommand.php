@@ -19,7 +19,7 @@ use Illuminate\Contracts\Cache\Repository as CacheRepository;
 class LuraCommand extends Command
 {
     /**
-     * The Installer Configurations
+     * The Installer Configurations.
      *
      * @var array
      */
@@ -357,5 +357,24 @@ class LuraCommand extends Command
 
             return $m[0];
         }, $subject);
+    }
+
+    /**
+     * Prompt the user for skippable input.
+     *
+     * @param string      $question
+     * @param string|null $default
+     *
+     * @return mixed
+     */
+    public function askSkippable(string $question, string $default = null): mixed
+    {
+        $question = $this->ask(trim($question) . ' [n to skip]', $default = null);
+
+        if (strtolower($question) == 'n') {
+            $question = null;
+        }
+
+        return $question;
     }
 }
