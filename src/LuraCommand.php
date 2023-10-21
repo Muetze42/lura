@@ -369,7 +369,7 @@ class LuraCommand extends Command
      */
     public function askSkippable(string $question, string $default = null): mixed
     {
-        $question = $this->ask(trim($question) . ' [n to skip]', $default = null);
+        $question = $this->ask(trim($question) . ' [n to skip]', $default);
 
         if (strtolower($question) == 'n') {
             $question = null;
