@@ -4,7 +4,10 @@
     "autoload": {
         "psr-4": {
             "NormanHuth\\Lura\\": "src/"
-        }
+        },
+        "files": [
+            "functions/helpers.php"
+        ]
     },
     "authors": [
         {
