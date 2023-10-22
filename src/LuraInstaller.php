@@ -21,6 +21,11 @@ abstract class LuraInstaller
     protected static ?array $dependenciesVersions = null;
 
     /**
+     * @var string
+     */
+    protected static string $versionsUrl = 'https://raw.githubusercontent.com/Muetze42/data/main/storage/versions.json';
+
+    /**
      * Add a dependencies to json.
      *
      * @param array  $dependencies
@@ -60,14 +65,28 @@ abstract class LuraInstaller
     protected static function getDependenciesVersions(): array
     {
         if (is_null(static::$dependenciesVersions)) {
-            if (
-                $contents = file_get_contents(
-                    'https://raw.githubusercontent.com/Muetze42/data/main/storage/versions.json'
-                )
-            ) {
-                if (Str::isJson($contents)) {
-                    static::$dependenciesVersions = json_decode($contents, true);
+            try {
+                $curl = curl_init();
+
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => static::$versionsUrl,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 6,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'GET',
+                ));
+
+                $response = curl_exec($curl);
+
+                curl_close($curl);
+                if ($response && is_string($response) && Str::isJson($response)) {
+                    static::$dependenciesVersions = json_decode($response, true);
                 }
+            } catch (\Exception) {
+                // silent
             }
         }
         if (is_null(static::$dependenciesVersions)) {
