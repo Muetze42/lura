@@ -1,5 +1,10 @@
-Personally, I will now use and maintain Lura2:  
+I have completely redeveloped a Lura with Laravel 11. I will now dedicate myself to this project for Commands/Lura/Installers etc:
+
 https://github.com/Muetze42/lura2
+
+[![Lura2](https://raw.githubusercontent.com/Muetze42/lura2/main/art/banner.png)](https://github.com/Muetze42/lura2)
+
+---
 
 # Lura - A Console Application Installer
 
